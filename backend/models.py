@@ -52,7 +52,7 @@ def train_and_select_models(df):
 
 def save_best_model(model, model_name):
     model_dir = Path("models") 
-    model_dir.mkdir(exists_ok=True)
+    model_dir.mkdir(exist_ok=True)
     model_path =model_dir / f"{model_name}.pkl"
     joblib.dump(model, model_name)
     logger.info(f"Modèle sauvegardé sous {model_path}")
