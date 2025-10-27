@@ -37,10 +37,9 @@ def app():
         st.write(f"- {k}")
 
     #Histogramme des variables numeriques
-    num_features = train_processed.select_dtypes(["float64"]).columns
     st.subheader("Histogramme des variables numeriques")
     plt.figure(figsize=(10,5))
-    for i, col in enumerate(num_features,1):
+    for i, col in enumerate(colonnes_numeriques,1):
         fig, ax = plt.subplots(figsize=(6, 4))
         sns.histplot(train_processed, x=col, bins=50, color="#B65FCF", ax=ax)
         ax.set_title(f"Distribution de la variable '{col}'")
@@ -64,19 +63,19 @@ def app():
     #Repartition en barplot d'une selection de variables categorielles qui s'y pretent
     
     st.subheader("Répartition des variables catégorielles")
-    plt.figure(figsize=(15, 5))
+    plt.figure(figsize=(6, 3))
     for i, col in enumerate(discrete_features, 1):
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, ax = plt.subplots(figsize=(3, 2))
         sns.countplot(data=train, x=col, palette="BuPu", ax=ax)
         ax.set_title(f"Répartition de '{col}'")
         st.pyplot(fig)
 
     #Repartition du reste des colonnes categorielles en pie chart
-    plt.figure(figsize=(15,10))
+    plt.figure(figsize=(6,3))
     color = sns.color_palette("BuPu")
     colonnes = ["road_type", "lighting", "weather", "time_of_day"]
     for i, col in enumerate(colonnes, 1):
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, ax = plt.subplots(figsize=(3, 2))
         label=train[col].unique()
         plt.pie(x=train[col].value_counts(), labels=label, colors=color, autopct='%1.1f%%')
         ax.set_title(f"Répartion de la variable  '{col}'")
