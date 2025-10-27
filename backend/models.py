@@ -54,7 +54,7 @@ def save_best_model(model, model_name):
     model_dir = Path("models") 
     model_dir.mkdir(exist_ok=True)
     model_path =model_dir / f"{model_name}.pkl"
-    joblib.dump(model, model_name)
+    joblib.dump(model, model_path)
     logger.info(f"Modèle sauvegardé sous {model_path}")
 
 
