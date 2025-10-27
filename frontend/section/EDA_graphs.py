@@ -28,7 +28,7 @@ def app():
     st.dataframe(train_processed)
 
     #Affichage de la repartition des variables numeriques
-    colonnes_numeriques = train_processed.select_dtypes(["number"]).columns
+    colonnes_numeriques = train_processed.select_dtypes(["float64"]).columns
     st.subheader("Les variables numeriques")
     st.write("Les colonnes numeriques du tableau de données utilisé pour la prévision :")
     logger.info(f"Les  colonnes numeriques : \n")
@@ -43,7 +43,7 @@ def app():
         fig, ax = plt.subplots(figsize=(6, 4))
         sns.histplot(train_processed, x=col, bins=50, color="#B65FCF", ax=ax)
         ax.set_title(f"Distribution de la variable '{col}'")
-    st.pyplot(fig)
+        st.pyplot(fig)
 
     #Affichage de la repartition des variables categorielles
     colonnes_cat = ["road_type", "num_lanes", "speed_limit", "lighting", "weather", "road_signs_present", 
@@ -68,8 +68,7 @@ def app():
         fig, ax = plt.subplots(figsize=(6, 4))
         sns.countplot(data=train, x=col, palette="BuPu", ax=ax)
         ax.set_title(f"Répartition de '{col}'")
-    plt.tight_layout()
-    st.pyplot(fig)
+        st.pyplot(fig)
 
     #Repartition du reste des colonnes categorielles en pie chart
     plt.figure(figsize=(15,10))
@@ -80,7 +79,7 @@ def app():
         label=train[col].unique()
         plt.pie(x=train[col].value_counts(), labels=label, colors=color, autopct='%1.1f%%')
         ax.set_title(f"Répartion de la variable  '{col}'")
-    st.pyplot(fig)
+        st.pyplot(fig)
 
     #Repartition des colonnes de booleens
     color = sns.color_palette("crest")
@@ -90,7 +89,7 @@ def app():
         fig, ax = plt.subplots(figsize=(6, 4))
         plt.pie(x=list(train[col].value_counts()), colors=color,labels=[True, False],autopct='%1.1f%%')
         ax.set_title(f"Répartion de la variable  '{col}'")
-    st.pyplot(fig)
+        st.pyplot(fig)
     
         
     
