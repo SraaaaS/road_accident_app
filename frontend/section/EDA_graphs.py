@@ -42,8 +42,7 @@ def app():
         fig, ax = plt.subplots(figsize=(6, 4))
         sns.histplot(train_processed, x=col, bins=50, color="#B65FCF", ax=ax)
         ax.set_title(f"Distribution de la variable '{col}'")
-        st.pyplot(fig)
-        st.pyplot()
+    st.pyplot(fig)
 
     #Affichage de la repartition des variables categorielles
     colonnes_cat = train.select_dtypes(["bool","int64"]).columns
@@ -68,7 +67,7 @@ def app():
         sns.countplot(data=train, x=col, palette="BuPu")
         plt.title(f"Répartition de {col}")
     plt.tight_layout()
-    st.pyplot()
+    st.pyplot(fig)
 
     #Repartition du reste des colonnes categorielles en pie chart
     plt.figure(figsize=(15,10))
@@ -79,7 +78,7 @@ def app():
         label=train[col].unique()
         plt.pie(x=train[col].value_counts(), labels=label, colors=color, autopct='%1.1f%%')
         plt.title(f"Répartion de la variable {col}")
-    st.pyplot()
+    st.pyplot(fig)
 
     #Repartition des colonnes de booleens
     color = sns.color_palette("crest")
@@ -89,7 +88,7 @@ def app():
         plt.subplot(2,2,i)
         plt.pie(x=list(train[col].value_counts()), colors=color,labels=[True, False],autopct='%1.1f%%')
         plt.title(f"Repartition de la variable '{col}'")
-    st.pyplot()
+    st.pyplot(fig)
     
         
     
