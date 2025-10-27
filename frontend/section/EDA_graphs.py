@@ -46,7 +46,8 @@ def app():
     st.pyplot(fig)
 
     #Affichage de la repartition des variables categorielles
-    colonnes_cat = train.select_dtypes(["bool","int64"]).columns
+    colonnes_cat = ["road_type", "num_lanes", "speed_limit", "lighting", "weather", "road_signs_present", 
+                    "public_road", "time_of_day", "holiday", "school_season", "num_reported_accidents"]
     st.write("Les colonnes categorielles du tableau de données utilisé pour la prévision")
     logger.info(f"Les  colonnes categorielles : \n")
     for k in colonnes_cat:
