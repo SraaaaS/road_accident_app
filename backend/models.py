@@ -50,13 +50,21 @@ def train_and_select_models(df):
     return best_model, nom_du_modele
 
 
-def save_best_model(model, model_name):
-    model_dir = Path("models") 
+def save_best_model(best_model, nom_du_modele):
+    model_dir = Path("model") 
     model_dir.mkdir(exist_ok=True)
-    model_path =model_dir / f"{model_name}.pkl"
-    joblib.dump(model, model_path)
+    model_path = model_dir / "best_model.pkl"
+    joblib.dump(best_model, model_path)
     logger.info(f"Modèle sauvegardé sous {model_path}")
 
+def load_best_model():
+    model_path = Path("model") / "best_model.pkl"
+    if not model_path.exists():
+        logger.error("Le modèle n'existe pas. Veuillez enregistrer le modèle d'abord.")
+        raise FileNotFoundError("Le modèle n'existe pas.")
+    best_model = joblib.load(model_path)
+    logger.info("Modèle chargé avec succès")
+    return best_model
 
 def predict(model, data):
     predictions = model.predict(data)

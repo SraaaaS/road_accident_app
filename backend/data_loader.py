@@ -2,7 +2,9 @@ import pandas as pd
 from loguru import logger
 import os
 from pathlib import Path
+import streamlit as st
 
+@st.cache_data
 def load_data(file_name: str) -> pd.DataFrame:
     """
     Charge les données à partir d'un fichier CSV.

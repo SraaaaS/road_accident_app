@@ -1,7 +1,9 @@
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from loguru import logger
+import streamlit as st
 
+@st.cache_data
 def feature_engineering(data):
 
     data_encoded = data.copy()
