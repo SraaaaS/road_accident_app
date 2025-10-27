@@ -7,6 +7,7 @@ import os
 import sys
 from backend.data_loader import load_data
 from backend.preprocessing import feature_engineering
+from loguru import logger
 
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
