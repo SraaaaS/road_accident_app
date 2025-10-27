@@ -29,10 +29,11 @@ def app():
 
     #Affichage de la repartition des variables numeriques
     colonnes_numeriques = train_processed.select_dtypes(["number"]).columns
-    st.subheader("Les colonnes numeriques du tableau de données utilisé pour la prévision")
+    st.subheader("Les variables numeriques")
+    st.write("Les colonnes numeriques du tableau de données utilisé pour la prévision :")
     logger.info(f"Les  colonnes numeriques : \n")
     for k in colonnes_numeriques:
-        logger.info(f"- {k}")
+        st.write(f"- {k}")
 
     #Histogramme des variables numeriques
     num_features = train_processed.select_dtypes(["float64"]).columns
@@ -46,15 +47,15 @@ def app():
 
     #Affichage de la repartition des variables categorielles
     colonnes_cat = train.select_dtypes(["bool","int64"]).columns
-    st.subheader("Les colonnes categorielles du tableau de données utilisé pour la prévision")
+    st.write("Les colonnes categorielles du tableau de données utilisé pour la prévision")
     logger.info(f"Les  colonnes categorielles : \n")
     for k in colonnes_cat:
-        logger.info(f"- {k}")
+        st.write(f"- {k}")
     
     logger.info("Valeurs uniques composant chaque colonne categorielles : \n")
-    st.subheader("Les valeurs uniques composant chaque colonne categorielle")
+    st.write("Les valeurs uniques composant chaque colonne categorielle")
     for cat in colonnes_cat :
-        logger.info(f" - {cat} : {train[cat].unique()}")
+        st.write(f" - {cat} : {train[cat].unique()}")
     
     discrete_features = ['num_lanes', 'speed_limit', 'num_reported_accidents']
 
@@ -63,9 +64,9 @@ def app():
     st.subheader("Répartition des variables catégorielles")
     plt.figure(figsize=(15, 5))
     for i, col in enumerate(discrete_features, 1):
-        plt.subplot(1, 3, i)
-        sns.countplot(data=train, x=col, palette="BuPu")
-        plt.title(f"Répartition de {col}")
+        fig, ax = plt.subplots(figsize=(6, 4))
+        sns.countplot(data=train, x=col, palette="BuPu", ax=ax)
+        ax.set_title(f"Répartition de '{col}'")
     plt.tight_layout()
     st.pyplot(fig)
 
@@ -74,10 +75,10 @@ def app():
     color = sns.color_palette("BuPu")
     colonnes = ["road_type", "lighting", "weather", "time_of_day"]
     for i, col in enumerate(colonnes, 1):
-        plt.subplot(2,2,i)
+        fig, ax = plt.subplots(figsize=(6, 4))
         label=train[col].unique()
         plt.pie(x=train[col].value_counts(), labels=label, colors=color, autopct='%1.1f%%')
-        plt.title(f"Répartion de la variable {col}")
+        ax.set_title(f"Répartion de la variable  '{col}'")
     st.pyplot(fig)
 
     #Repartition des colonnes de booleens
@@ -85,9 +86,9 @@ def app():
     plt.figure(figsize=(15,10))
     booleens = ["road_signs_present", "public_road", "holiday", "school_season"]
     for i, col in enumerate(booleens, 1):
-        plt.subplot(2,2,i)
+        fig, ax = plt.subplots(figsize=(6, 4))
         plt.pie(x=list(train[col].value_counts()), colors=color,labels=[True, False],autopct='%1.1f%%')
-        plt.title(f"Repartition de la variable '{col}'")
+        ax.set_title(f"Répartion de la variable  '{col}'")
     st.pyplot(fig)
     
         
