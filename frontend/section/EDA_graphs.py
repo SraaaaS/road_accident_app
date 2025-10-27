@@ -39,11 +39,11 @@ def app():
     st.subheader("Histogramme des variables numeriques")
     plt.figure(figsize=(10,5))
     for i, col in enumerate(num_features,1):
-        plt.subplot(1,2,i)
-        sns.histplot(train_processed, x=col, bins=50, color="#B65FCF")
-        plt.title(f"Distribution de la variable '{col}'")
-    plt.tight_layout()
-    st.pyplot()
+        fig, ax = plt.subplots(figsize=(6, 4))
+        sns.histplot(train_processed, x=col, bins=50, color="#B65FCF", ax=ax)
+        ax.set_title(f"Distribution de la variable '{col}'")
+        st.pyplot(fig)
+        st.pyplot()
 
     #Affichage de la repartition des variables categorielles
     colonnes_cat = train.select_dtypes(["bool","int64"]).columns
