@@ -38,7 +38,7 @@ def app():
 
     #Histogramme des variables numeriques
     st.subheader("Histogramme des variables numeriques")
-    plt.figure(figsize=(10,5))
+    plt.figure(figsize=(15,10))
     for i, col in enumerate(colonnes_numeriques,1):
         fig, ax = plt.subplots(figsize=(6, 4))
         sns.histplot(train_processed, x=col, bins=50, color="#B65FCF", ax=ax)
@@ -63,7 +63,7 @@ def app():
     #Repartition en barplot d'une selection de variables categorielles qui s'y pretent
     
     st.subheader("Répartition des variables catégorielles")
-    plt.figure(figsize=(6, 3))
+    plt.figure(figsize=(15,10))
     for i, col in enumerate(discrete_features, 1):
         fig, ax = plt.subplots(figsize=(3, 2))
         sns.countplot(data=train, x=col, palette="BuPu", ax=ax)
@@ -71,7 +71,7 @@ def app():
         st.pyplot(fig)
 
     #Repartition du reste des colonnes categorielles en pie chart
-    plt.figure(figsize=(6,3))
+    plt.figure(figsize=(15,10))
     color = sns.color_palette("BuPu")
     colonnes = ["road_type", "lighting", "weather", "time_of_day"]
     for i, col in enumerate(colonnes, 1):
