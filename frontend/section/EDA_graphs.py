@@ -35,7 +35,7 @@ def app():
         logger.info(f"- {k}")
 
     #Histogramme des variables numeriques
-    num_features = train.select_dtypes(["float64"]).columns
+    num_features = train_processed.select_dtypes(["float64"]).columns
     st.subheader("Histogramme des variables numeriques")
     plt.figure(figsize=(10,5))
     for i, col in enumerate(num_features,1):
@@ -43,13 +43,13 @@ def app():
         sns.histplot(train_processed, x=col, bins=50, color="#B65FCF")
         plt.title(f"Distribution de la variable '{col}'")
     plt.tight_layout()
-    plt.show()
+    st.pyplot()
 
     #Affichage de la repartition des variables categorielles
     colonnes_cat = train.select_dtypes(["bool","int64"]).columns
     st.subheader("Les colonnes categorielles du tableau de données utilisé pour la prévision")
     logger.info(f"Les  colonnes categorielles : \n")
-    for k in colonnes_bool:
+    for k in colonnes_cat:
         logger.info(f"- {k}")
     
     logger.info("Valeurs uniques composant chaque colonne categorielles : \n")
@@ -68,7 +68,7 @@ def app():
         sns.countplot(data=train, x=col, palette="BuPu")
         plt.title(f"Répartition de {col}")
     plt.tight_layout()
-    plt.show()
+    st.pyplot()
 
     #Repartition du reste des colonnes categorielles en pie chart
     plt.figure(figsize=(15,10))
@@ -79,7 +79,7 @@ def app():
         label=train[col].unique()
         plt.pie(x=train[col].value_counts(), labels=label, colors=color, autopct='%1.1f%%')
         plt.title(f"Répartion de la variable {col}")
-    plt.show()
+    st.pyplot()
 
     #Repartition des colonnes de booleens
     color = sns.color_palette("crest")
@@ -89,7 +89,7 @@ def app():
         plt.subplot(2,2,i)
         plt.pie(x=list(train[col].value_counts()), colors=color,labels=[True, False],autopct='%1.1f%%')
         plt.title(f"Repartition de la variable '{col}'")
-    plt.show()
+    st.pyplot()
     
         
     
