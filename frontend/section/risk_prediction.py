@@ -9,13 +9,13 @@ from backend.models import predict, load_best_model
 def app(best_model):
     st.title("Prediction du risque d'accident")
 
-    # #Load model
-    # try:
-    #     model = joblib.load("model/best_model.pkl")
-    #     st.success("Modèle chargé avec succès.")
-    # except Exception as e:
-    #     st.error(f"Erreur lors du chargement du modèle : {e}")
-    #     return
+    #Load model
+    try:
+        model = joblib.load("model/best_model.pkl")
+        st.success("Modèle chargé avec succès.")
+    except Exception as e:
+        st.error(f"Erreur lors du chargement du modèle : {e}")
+        return
     
     #user input
     user_input = risk_form()
@@ -24,8 +24,13 @@ def app(best_model):
         input_processed = feature_engineering(input_df)
         #Prediction
         try:
+            expected_features = best_model.feature_names_
+            # Réordonner et s'assurer que toutes les colonnes sont présentes
+            input_processed = input_processed.reindex(columns=expected_features, fill_value=0)
+
             prediction = predict(best_model, input_processed)
             st.success(f"Resultat de la prediction : {prediction}")
         except Exception as e:
             st.error(f"Erreur lors de la prediction : {e}")
+
 

@@ -6,8 +6,9 @@ from loguru import logger
 
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if ROOT_DIR not in sys.path:
-    sys.path.append(ROOT_DIR)
+if str(ROOT_DIR) not in sys.path:
+    sys.path.append(str(ROOT_DIR))
+    logger.info(f"ROOT_DIR added to path: {ROOT_DIR}")
 # ... your existing path code
 logger.info(f"ROOT_DIR added to path: {ROOT_DIR}") # <--- ADD THIS TEMPORARY LINE
 from backend.models import load_best_model

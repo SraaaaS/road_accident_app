@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 def risk_form():
     with st.form(key='risk_form'):
@@ -8,7 +9,7 @@ def risk_form():
 
         road_type = st.selectbox("Type de route", 
                                 ["Autoroute", "Route de Ville", "Route de campagne"])
-        lightining = st.selectbox("Conditions d'éclairage",
+        lighting = st.selectbox("Conditions d'éclairage",
                                   ["Lumiere du soleil", "Eclairage Nocturne", "Sombre"])
         weather = st.selectbox("Conditions météorologiques",
                                ["Pluvieux", "Brouillard", "Eclairci"])
@@ -21,25 +22,49 @@ def risk_form():
         public_road = st.toggle("Route publique", True)
         holiday = st.toggle("Jour férié", False)
         school_season = st.toggle("Saison scolaire", True)
-        num_reported_accidents = st.selectbox("Nombre d'accidents signalés dans la zone", 0, 4, 1)
+        num_reported_accidents = st.selectbox("Nombre d'accidents signalés dans la zone", options=list(range(5)), index=1)
 
                                          
-        submitted = st.form_submit_button(label='Prédire le risque d\'accident')
+        submitted = st.form_submit_button('Prédire le risque d\'accident')
         if submitted==True:
             st.success("Données entrées avec succès! Préparation de la prédiction...")
+            # 🎯 MAPPING des valeurs françaises vers les labels du modèle
+            road_type_map = {
+                "Autoroute": "highway",
+                "Route de Ville": "urban",
+                "Route de campagne": "rural"
+            }
+            lighting_map = {
+                "Lumiere du soleil": "daylight",
+                "Eclairage Nocturne": "night",
+                "Sombre": "dim"
+            }
+            weather_map = {
+                "Eclairci": "clear",
+                "Brouillard": "foggy",
+                "Pluvieux": "rainy"
+            }
+            time_of_day_map = {
+                "Matin": "morning",
+                "Après-midi": "afternoon",
+                "Soir": "evening"
+            }
+
+            # Appliquer les mappings
             return {
-                "Type de route": road_type,
-                "Conditions d'éclairage": lightining,
-                "Conditions météorologiques": weather,
-                "Moment de la journée": time_of_day,
-                "Courbure de la route": curvature,
-                "Nombre de voies": num_lanes,
-                "Limite de vitesse": speed_limit,
-                "Présence de panneaux de signalisation": road_sign_present,
-                "Route publique": public_road,
-                "Jour férié": holiday,
-                "Saison scolaire": school_season,
-                "Nombre d'accidents signalés dans la zone": num_reported_accidents
+                "id": 0,
+                "road_type": road_type_map[road_type],
+                "num_lanes": num_lanes,
+                "curvature": curvature,
+                "speed_limit": speed_limit,
+                "lighting": lighting_map[lighting],
+                "weather": weather_map[weather],
+                "road_signs_present": road_sign_present,
+                "public_road": public_road,
+                "time_of_day": time_of_day_map[time_of_day],
+                "holiday": holiday,
+                "school_season": school_season,
+                "num_reported_accidents": num_reported_accidents
             }
         else:
             st.info("Veuillez remplir le formulaire et soumettre pour obtenir une prédiction.")
