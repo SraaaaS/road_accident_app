@@ -28,7 +28,8 @@ def app():
     st.dataframe(train_processed)
 
     #Affichage de la repartition des variables numeriques
-    colonnes_numeriques = train_processed.select_dtypes(["float64"]).columns
+    colonnes_numeriques = ["curvature", "accident_risk", "curvature_speed_interaction", "accidents_per_lane", 
+                           "curvature_per_lane", "speed_per_lane"]
     st.subheader("Les variables numeriques")
     st.write("Les colonnes numeriques du tableau de données utilisé pour la prévision :")
     logger.info(f"Les  colonnes numeriques : \n")
