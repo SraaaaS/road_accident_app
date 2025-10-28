@@ -17,8 +17,10 @@ from frontend.section import home, EDA_graphs, risk_prediction, about
 from components.sidebar import show_sidebar
 
 
-#st.set_page_config(page_title="Application des accidents routiers" , layout="wide")
-st.title("Application des accidents routiers")
+st.set_page_config(page_title="APAR" , layout="wide")
+sns.set_theme(style="whitegrid")
+
+st.title("Application de Prévention des Accidents Routiers")
 
 page = show_sidebar()
 
