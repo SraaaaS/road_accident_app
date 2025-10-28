@@ -5,7 +5,6 @@ import streamlit as st
 from loguru import logger
 #
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../backend")))
 #
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
