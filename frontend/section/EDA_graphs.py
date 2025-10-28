@@ -13,20 +13,6 @@ from loguru import logger
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-st.markdown("""
-    <style>
-    body {
-        background-color: #f8f9fa;
-        color: #333333;
-    }
-    h1, h2, h3, h4 {
-        color: #4B0082; /* violet foncé */
-    }
-    .stDataFrame {
-        background-color: white !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 
 def app():
