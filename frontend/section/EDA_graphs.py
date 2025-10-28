@@ -12,8 +12,6 @@ from loguru import logger
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-st.set_page_config(layout="wide", page_title="Analyse EDA - Accidents Routiers")
-sns.set_theme(style="whitegrid")
 
 st.markdown("""
     <style>
@@ -35,9 +33,8 @@ def app():
     train = load_data("train.csv")
     train_processed = feature_engineering(train)
 
-    st.title("Analyse Exploratoire des Données (EDA)")
-    st.write("""Explorez les données des accidents de la route à travers diverses visualisations
-             """)
+    st.markdown("<p style='color:#307D7E; font-size:34px; font-weight:bold'>Analyse Exploratoire des Données (EDA)", unsafe_allow_html=True)
+    st.markdown("<p style='font-size:20px'>Explorez les données des accidents de la route à travers diverses visualisations", unsafe_allow_html=True)
     
     colonnes_numeriques = ["curvature", "accident_risk", "curvature_speed_interaction", "accidents_per_lane", 
                            "curvature_per_lane", "speed_per_lane"]
@@ -50,15 +47,17 @@ def app():
 
 
     #Affichage du tableau de données initial
-    st.subheader("Données brutes")
+    st.markdown("<p style='color:#307D7E; font-size:20px; font-weight:bold'>Données brutes", unsafe_allow_html=True)
     st.dataframe(train)
 
     #Affichage du tableau des données processed
-    st.subheader("Données apres traitement")
+    
+    st.markdown("<p style='color:#307D7E; font-size:20px; font-weight:bold'>Données apres traitement", unsafe_allow_html=True))
     st.dataframe(train_processed)
 
 
-    st.subheader("Visualisation des variables")
+    
+    st.markdown("<p style='color:#307D7E; font-size:20px; font-weight:bold'>Visualisation des variables", unsafe_allow_html=True)
     choice_type = st.radio("Choisissez le type de variables à afficher :", ["Numériques", "Catégorielles"])
 
     if choice_type == "Numériques":
