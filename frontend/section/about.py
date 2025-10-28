@@ -2,7 +2,7 @@
 import streamlit as st
 
 def app():
-    st.markdown("<p style='color:#348781; font-size:42px; font-weight:bold'>A propos de cette application...", unsafe_allow_html=True)
+    st.markdown("<p style='color:#348781; font-size:34px; font-weight:bold'>A propos de cette application...", unsafe_allow_html=True)
     st.markdown("""
     Cette application a été développée dans le cadre de la compétition Kaggle du mois 
     d'Octobre 2025 : ***"Playground Series - Season 5, Episode 10, Predicting Road Accident Risk"***
@@ -12,7 +12,7 @@ def app():
     Derriere cette application des techniques avancées d'analyse de données et de machine learning
     ont été emloyées pour fournir des insights les plus precises et pertinentes possibles aux utilisateurs.
              
-    **<span style='color:#438D80; font-weight:bold'>Objectifs de l'application :</span>**
+    **<span style='color:#438D80; font-size:15; font-weight:bold'>Objectifs de l'application :</span>**
     
         -Analyser les tendances des accidents routiers.
              
@@ -21,7 +21,7 @@ def app():
         -Prédire le risque d'accident en fonction de divers paramètres.
              
     
-    **<span style='color:#438D80; font-weight:bold'>Technologies utilisées :<\span>**
+    **<span style='color:#438D80; font-size:15; font-weight:bold'>Technologies utilisées :</span>**
              
         -Streamlit pour l'interface utilisateur.
              
@@ -32,8 +32,8 @@ def app():
         -Matplotlib et Seaborn pour la visualisation des données.
              
              
-    **<span style='color:#438D80; font-weight:bold'>Application développée par :<\span>** Sara
+    **<span style='color:#438D80; font-size:15; font-weight:bold'>Application développée par :</span>** Sara
              
-    **<span style='color:#438D80; font-weight:bold'>Date :<\span>** Octobre 2025
+    **<span style='color:#438D80; font-size:15; font-weight:bold'>Date :</span>** Octobre 2025
              
 """, unsafe_allow_html=True)
