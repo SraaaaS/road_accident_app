@@ -6,6 +6,6 @@ def app():
             \nVous pouvez naviguer à travers les différentes sections de l'application pour **explorer les données**, **visualiser les analyses** et obtenir des **insights** précieux.
              \nUtilisez le **menu de navigation** sur le côté pour accéder aux différentes fonctionnalités.""")
     st.image("frontend/components/home_pic.png", use_column_width=True)
-    st.caption("Image illustrative de la competition <span style='font-style:italic'>Playground Series - Season 5, Episode 10 sur Kaggle</span>", unsafe_allow_html=True )
-    st.caption("\nAPAR = Application de Prévention contre les Accidents Routiers")
+    st.caption("Image illustrative de la competition <span style='font-style:italic'>Playground Series - Season 5, Episode 10</span> sur Kaggle", unsafe_allow_html=True )
+    st.caption("\n*APAR = Application de Prévention contre les Accidents Routiers")
     
