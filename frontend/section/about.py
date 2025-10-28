@@ -12,7 +12,7 @@ def app():
     Derriere cette application des techniques avancées d'analyse de données et de machine learning
     ont été emloyées pour fournir des insights les plus precises et pertinentes possibles aux utilisateurs.
              
-    **<span style='color:#438D80'>Objectifs de l'application :</span>**
+    **<span style='color:#438D80; font-weight:bold'>Objectifs de l'application :</span>**
     
         -Analyser les tendances des accidents routiers.
              
@@ -21,7 +21,7 @@ def app():
         -Prédire le risque d'accident en fonction de divers paramètres.
              
     
-    **:#438D80[Technologies utilisées :]**
+    **<span style='color:#438D80'>Technologies utilisées :<\span>**
              
         -Streamlit pour l'interface utilisateur.
              
@@ -32,8 +32,8 @@ def app():
         -Matplotlib et Seaborn pour la visualisation des données.
              
              
-    **:#438D80[Application développée par :]** Sara
+    **<span style='color:#438D80'>Application développée par :<\span>** Sara
              
-    **:#438D80[Date :]** Octobre 2025
+    **<span style='color:#438D80'>Date :<\span>** Octobre 2025
              
 """, unsafe_allow_html=True)
