@@ -2,7 +2,7 @@
 import streamlit as st
 
 def app():
-    st.markdown("<p style='color:#348781; font-size:42px; font-weight:bold'>A propos de cette application", unsafe_allow_html=True)
+    st.markdown("<p style='color:#348781; font-size:42px; font-weight:bold'>A propos de cette application...", unsafe_allow_html=True)
     st.markdown("""
     Cette application a été développée dans le cadre de la compétition Kaggle du mois 
     d'Octobre 2025 : ***"Playground Series - Season 5, Episode 10, Predicting Road Accident Risk"***
@@ -12,7 +12,7 @@ def app():
     Derriere cette application des techniques avancées d'analyse de données et de machine learning
     ont été emloyées pour fournir des insights les plus precises et pertinentes possibles aux utilisateurs.
              
-    **Objectifs de l'application :**
+    **:blue[Objectifs de l'application :]**
     
         -Analyser les tendances des accidents routiers.
              
