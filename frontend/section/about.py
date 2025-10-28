@@ -36,4 +36,4 @@ def app():
              
     **:#438D80[Date :]** Octobre 2025
              
-""")
+""", unsafe_allow_html=True)
