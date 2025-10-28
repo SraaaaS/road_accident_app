@@ -12,7 +12,7 @@ def app():
     Derriere cette application des techniques avancées d'analyse de données et de machine learning
     ont été emloyées pour fournir des insights les plus precises et pertinentes possibles aux utilisateurs.
              
-    **:Sea_Turtle_Green[Objectifs de l'application :]**
+    **<span style='color:Sea_Turtle_Green'>Objectifs de l'application :</span>**
     
         -Analyser les tendances des accidents routiers.
              
