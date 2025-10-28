@@ -3,7 +3,7 @@ import streamlit as st
 
 def app():
     st.title("A propos de cette application")
-    st.write("
+    st.write("""
     Cette application a été développée dans le cadre de la compétition Kaggle du mois 
     d'Octobre 2025 : *_"Playground Series - Season 5, Episode 10, Predicting Road Accident Risk"_*
     Elle utilise en entrée des données sur des accidents routiers de sorte à predire le risque 
@@ -36,4 +36,4 @@ def app():
              
     *Date :* Octobre 2025
              
-")
+""")
