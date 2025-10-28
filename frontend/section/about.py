@@ -21,7 +21,7 @@ def app():
         -Prédire le risque d'accident en fonction de divers paramètres.
              
     
-    **<span style='color:#438D80'>Technologies utilisées :<\span>**
+    **<span style='color:#438D80; font-weight:bold'>Technologies utilisées :<\span>**
              
         -Streamlit pour l'interface utilisateur.
              
@@ -32,8 +32,8 @@ def app():
         -Matplotlib et Seaborn pour la visualisation des données.
              
              
-    **<span style='color:#438D80'>Application développée par :<\span>** Sara
+    **<span style='color:#438D80; font-weight:bold'>Application développée par :<\span>** Sara
              
-    **<span style='color:#438D80'>Date :<\span>** Octobre 2025
+    **<span style='color:#438D80; font-weight:bold'>Date :<\span>** Octobre 2025
              
 """, unsafe_allow_html=True)
