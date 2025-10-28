@@ -2,7 +2,7 @@
 import streamlit as st
 
 def app():
-    st.title("<p style='color:gold; font-size:20px;'>A propos de cette application", unsafe_allow_html=True)
+    st.markdown("<p style='color:gold; font-size:42px;'>A propos de cette application", unsafe_allow_html=True)
     st.write("""
     Cette application a été développée dans le cadre de la compétition Kaggle du mois 
     d'Octobre 2025 : ***"Playground Series - Season 5, Episode 10, Predicting Road Accident Risk"***
