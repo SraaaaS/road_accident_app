@@ -3,46 +3,45 @@ import pandas as pd
 
 def risk_form():
     with st.form(key='risk_form'):
-        st.write("Veuillez entrer les paramètres pour prédire le risque d'accident :")
+        st.write("Veuillez entrer les paramètres de votre choix pour prédire le risque d'accident associé:")
 
-        st.subheader("Conditions routières:")
+        st.markdown("<p style='color:#307D7E; font-size:26px; font-weight:bold'>Conditions environnementales et routières", unsafe_allow_html=True)
 
         road_type = st.selectbox("Type de route", 
-                                ["Autoroute", "Route de Ville", "Route de campagne"])
+                                ["Autoroute", "Ville", "Route de campagne"])
         lighting = st.selectbox("Conditions d'éclairage",
-                                  ["Lumiere du soleil", "Eclairage Nocturne", "Sombre"])
+                                  ["Lumière du soleil", "Eclairage Nocturne", "Sombre"])
         weather = st.selectbox("Conditions météorologiques",
-                               ["Pluvieux", "Brouillard", "Eclairci"])
+                               ["Pluie", "Brouillard", "Ciel Dégagé"])
         time_of_day = st.selectbox("Moment de la journée",
                                    ["Matin", "Après-midi", "Soir"])
         curvature = st.slider("Courbure de la route", 0, 90, 10)
-        num_lanes = st.slider("Nombre de voies", 1, 5, 1)
+        num_lanes = st.selectbox("Nombre de voies", [1, 2, 3, 4, 5])
         speed_limit = st.slider("Limite de vitesse", 20, 130, 10)
         road_sign_present = st.toggle("Présence de panneaux de signalisation", True)
         public_road = st.toggle("Route publique", True)
         holiday = st.toggle("Jour férié", False)
-        school_season = st.toggle("Saison scolaire", True)
+        school_season = st.toggle("Période scolaire", True)
         num_reported_accidents = st.selectbox("Nombre d'accidents signalés dans la zone", options=list(range(5)), index=1)
-
                                          
         submitted = st.form_submit_button('Prédire le risque d\'accident')
         if submitted==True:
-            st.success("Données entrées avec succès! Préparation de la prédiction...")
+            st.info("Données entrées avec succès! Préparation de la prédiction...")
             # 🎯 MAPPING des valeurs françaises vers les labels du modèle
             road_type_map = {
                 "Autoroute": "highway",
-                "Route de Ville": "urban",
+                "Ville": "urban",
                 "Route de campagne": "rural"
             }
             lighting_map = {
-                "Lumiere du soleil": "daylight",
+                "Lumière du soleil": "daylight",
                 "Eclairage Nocturne": "night",
                 "Sombre": "dim"
             }
             weather_map = {
-                "Eclairci": "clear",
+                "Ciel Dégagé": "clear",
                 "Brouillard": "foggy",
-                "Pluvieux": "rainy"
+                "Pluie": "rainy"
             }
             time_of_day_map = {
                 "Matin": "morning",

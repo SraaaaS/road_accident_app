@@ -18,7 +18,15 @@ from components.sidebar import show_sidebar
 
 st.set_page_config(page_title="APAR" , layout="wide")
 
-st.title("Application de Prévention des Accidents Routiers")
+st.markdown("""
+<p style='color:#25383C; font-size:40px; font-weight:bold; margin-top:0; margin-bottom:10px;'>
+  <span style='color:#438D80; font-size:44px;'>A</span>pplication de 
+  <span style='color:#438D80; font-size:44px;'>P</span>révention des 
+  <span style='color:#438D80; font-size:44px;'>A</span>ccidents 
+  <span style='color:#438D80; font-size:44px;'>R</span>outiers
+</p>
+""", unsafe_allow_html=True)
+st.write("---") 
 
 page = show_sidebar()
 

@@ -7,12 +7,12 @@ from backend.preprocessing import feature_engineering
 from backend.models import predict, load_best_model
 
 def app(best_model):
-    st.title("Prediction du risque d'accident")
-
+    st.markdown("<p style='color:#348781; font-size:34px; font-weight:bold'>Prediction du risque d'accident", unsafe_allow_html=True)
+    
     #Load model
     try:
         model = joblib.load("model/best_model.pkl")
-        st.success("Modèle chargé avec succès.")
+        st.info("Modèle chargé avec succès. Prêt pour la prédiction.")
     except Exception as e:
         st.error(f"Erreur lors du chargement du modèle : {e}")
         return
@@ -28,8 +28,9 @@ def app(best_model):
             # Réordonner et s'assurer que toutes les colonnes sont présentes
             input_processed = input_processed.reindex(columns=expected_features, fill_value=0)
 
-            prediction = predict(best_model, input_processed)
-            st.success(f"Resultat de la prediction : {prediction}")
+            prediction = predict(best_model, input_processed)[0]
+            st.success("**Resultat de la prediction :**")
+            st.metric(label="Dans ces conditions, le risque que le conducteur soit impliqué dans un accident est de :", value=f"{100*prediction:.2f} %")
         except Exception as e:
             st.error(f"Erreur lors de la prediction : {e}")
 

@@ -38,7 +38,7 @@ def app():
 
     #Affichage du tableau des données processed
     
-    st.markdown("<p style='color:#307D7E; font-size:20px; font-weight:bold'>Données apres traitement", unsafe_allow_html=True))
+    st.markdown("<p style='color:#307D7E; font-size:20px; font-weight:bold'>Données après traitement", unsafe_allow_html=True)
     st.dataframe(train_processed)
 
 
