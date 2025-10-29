@@ -6,17 +6,10 @@ from loguru import logger
 # --- DEBUT DU BLOC TEMPORAIRE POUR FORCER THUMBNAIL ---
 import streamlit as st
 
-# Configuration de la page (optionnel)
-st.set_page_config(page_title="Road Accident App", layout="wide")
-
-# Affiche l'image d'aperçu immédiatement
-st.image("https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail_v2.png",
-         caption="Aperçu - Road Accident App", use_column_width=True)
-
-# STOPPER L'EXECUTION : on s'assure que la page render uniquement l'image
-st.stop()
-# --- FIN DU BLOC TEMPORAIRE ---
-
+st.set_page_config(
+    page_title="Application de Prévention contre les Accidents Routiers", 
+   layout="wide", page_icon="🚘" 
+)
 
 if st.button("🔄 Vider le cache"):
     st.cache_data.clear()
@@ -24,10 +17,7 @@ if st.button("🔄 Vider le cache"):
     st.success("Cache vidé avec succès ✅")
 
 
-#st.set_page_config(
-    #page_title="Application de Prévention contre les Accidents Routiers", 
-   # layout="wide", page_icon="🚘" 
-#)
+
 
 image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail.png" 
 
