@@ -10,7 +10,7 @@ import streamlit as st
 st.set_page_config(page_title="Road Accident App", layout="wide")
 
 # Affiche l'image d'aperçu immédiatement
-st.image("https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail.png",
+st.image("https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail_v2.png",
          caption="Aperçu - Road Accident App", use_column_width=True)
 
 # STOPPER L'EXECUTION : on s'assure que la page render uniquement l'image
