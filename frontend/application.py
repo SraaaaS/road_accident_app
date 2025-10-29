@@ -4,7 +4,7 @@ import streamlit as st
 from loguru import logger
 st.set_page_config(
     page_title="Application de Prévention contre les Accidents Routiers", 
-    layout="wide", page_icon="🚨" 
+    layout="wide", page_icon="🚘" 
 )
 
 if "path_added" not in st.session_state:
