@@ -23,8 +23,7 @@ og_tags = f"""
 st.components.v1.html(og_tags, height=0, width=0)
 
 # 3. Redirection immédiate
-# Nous utilisons st.experimental_rerun() après avoir injecté le HTML pour rediriger
-# vers le VRAI contenu de l'application.
+st.experimental_rerun() 
 
 # Si vous voulez une redirection immédiate, utilisez st.markdown avec du code HTML
 # C'est plus fiable pour une redirection instantanée.
