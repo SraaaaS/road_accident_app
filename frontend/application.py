@@ -3,6 +3,8 @@ import os
 import streamlit as st
 from loguru import logger
 
+st.cache_data.clear()
+
 st.set_page_config(
     page_title="Application de Prévention contre les Accidents Routiers", 
     layout="wide", page_icon="🚘" 
