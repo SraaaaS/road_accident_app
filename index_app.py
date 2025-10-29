@@ -10,7 +10,7 @@ st.set_page_config(
 # Ceci est le seul moyen de forcer Streamlit à inclure ces balises.
 
 image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail.png" 
-app_url = "https://road-accident-application.streamlit.app/frontend/application.py" # L'URL complète de votre VRAIE app
+app_url = "https://road-accident-application2.streamlit.app/frontend/application.py" # L'URL complète de votre VRAIE app
 
 og_tags = f"""
     <meta property="og:title" content="Application de Prévention contre les Accidents Routiers">
