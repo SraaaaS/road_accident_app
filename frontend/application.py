@@ -2,10 +2,21 @@ import sys
 import os
 import streamlit as st
 from loguru import logger
+
 st.set_page_config(
     page_title="Application de Prévention contre les Accidents Routiers", 
     layout="wide", page_icon="🚘" 
 )
+
+image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail.png" 
+
+og_image_tag = f"""
+    <meta property="og:image" content="{image_url}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+"""
+
+st.components.v1.html(og_image_tag, height=0, width=0)
 
 if "path_added" not in st.session_state:
     ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
