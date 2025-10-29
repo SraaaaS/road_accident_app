@@ -9,7 +9,7 @@ st.set_page_config(
 # 2. Injection des MÉTADONNÉES CRITIQUES (og:image) dans le <body>
 # Ceci est le seul moyen de forcer Streamlit à inclure ces balises.
 
-image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail.png" 
+image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail_v2.png" 
 app_url = "https://road-accident-application.streamlit.app/frontend/application.py" # L'URL complète de votre VRAIE app
 
 og_tags = f"""
