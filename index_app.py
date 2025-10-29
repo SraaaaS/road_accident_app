@@ -1,29 +1,38 @@
 import streamlit as st
-import time
 
-# 1. Configuration et Injection des MÉTADONNÉES (Gardez ceci !)
-st.set_page_config(
-    page_title="Application de Prévention contre les Accidents Routiers", 
-    layout="wide"
-)
+# La seule ligne nécessaire pour définir le titre de la page pour le navigateur
+st.set_page_config(page_title="Application de Prévention contre les Accidents Routiers", layout="wide")
 
-# ... (Votre injection og_tags via st.components.v1.html ici) ...
+# --- MÉTADONNÉES OG:IMAGE ---
+# (Assurez-vous que l'URL d'image est la plus récente, par ex. avec ?v=8)
+image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail_v2.png?v=9" 
+TARGET_PATH = "/frontend/application.py"
+WAIT_TIME = 1 # Délai d'une seconde pour que le scraper lise les balises
 
-# 2. Redirection via Python (la partie critique)
-# Définissez l'URL de redirection (le chemin de votre VRAI fichier Streamlit)
-# Note : Nous utilisons le chemin relatif comme Streamlit Cloud s'attend.
-TARGET_URL = "/frontend/application.py"
+og_tags = f"""
+    <meta property="og:title" content="Application de Prévention contre les Accidents Routiers">
+    <meta property="og:image" content="{image_url}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+"""
 
-# Placez la redirection dans un bloc conditionnel pour qu'elle ne se lance pas sans fin
-if st.session_state.get('redirect_done', False) == False:
-    st.session_state['redirect_done'] = True
-    st.info("Chargement de l'application complète...") # Message de transition si besoin
-    time.sleep(0.5) # Petite pause pour laisser le temps au scraper de lire les balises
-    st.rerun() # Ceci relance l'application
-    
-# 3. Code de secours (pour éviter l'écran blanc)
-st.markdown(f'<meta http-equiv="refresh" content="0; url={TARGET_URL}">', unsafe_allow_html=True)
-# Nous conservons la balise HTML de secours pour les navigateurs ou les environnements qui ne supportent pas st.rerun ou qui ont un cache agressif.
+# 1. Injection des balises og:image/og:title (Invisible)
+st.components.v1.html(og_tags, height=0, width=0)
 
-# Le code ci-dessous ne devrait jamais être atteint si la redirection fonctionne.
-st.stop()
+# 2. Redirection HTML (après 1 seconde)
+# Cela est beaucoup plus fiable que st.rerun() ou la redirection instantanée.
+redirection_script = f"""
+<meta http-equiv="refresh" content="{WAIT_TIME}; url={TARGET_PATH}">
+<script>
+    // Ajout d'un petit script pour garantir la redirection sur certains navigateurs
+    setTimeout(function() {{
+        window.location.href = '{TARGET_PATH}';
+    }}, {WAIT_TIME * 1000});
+</script>
+"""
+st.markdown(redirection_script, unsafe_allow_html=True)
+
+# Affichage d'un message minimal pendant la redirection (pour éviter l'écran blanc)
+st.write(f"Chargement de l'application... Vous serez redirigé dans {WAIT_TIME} seconde(s).")
+
+# Le script s'arrête ici. Il ne doit contenir aucune autre logique.
