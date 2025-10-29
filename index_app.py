@@ -1,36 +1,29 @@
 import streamlit as st
+import time
 
-# 1. Configuration pour le titre (nécessaire même si l'app redirige)
+# 1. Configuration et Injection des MÉTADONNÉES (Gardez ceci !)
 st.set_page_config(
     page_title="Application de Prévention contre les Accidents Routiers", 
     layout="wide"
 )
 
-# 2. Injection des MÉTADONNÉES CRITIQUES (og:image) dans le <body>
-# Ceci est le seul moyen de forcer Streamlit à inclure ces balises.
+# ... (Votre injection og_tags via st.components.v1.html ici) ...
 
-image_url = "https://raw.githubusercontent.com/SraaaaS/road_accident_app/master/APAR_thumbnail_v2.png?v=6" 
-app_url = "https://road-accident-application2.streamlit.app/frontend/application.py" # L'URL complète de votre VRAIE app
+# 2. Redirection via Python (la partie critique)
+# Définissez l'URL de redirection (le chemin de votre VRAI fichier Streamlit)
+# Note : Nous utilisons le chemin relatif comme Streamlit Cloud s'attend.
+TARGET_URL = "/frontend/application.py"
 
-og_tags = f"""
-    <meta property="og:title" content="Application de Prévention contre les Accidents Routiers">
-    <meta property="og:image" content="{image_url}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-"""
+# Placez la redirection dans un bloc conditionnel pour qu'elle ne se lance pas sans fin
+if st.session_state.get('redirect_done', False) == False:
+    st.session_state['redirect_done'] = True
+    st.info("Chargement de l'application complète...") # Message de transition si besoin
+    time.sleep(0.5) # Petite pause pour laisser le temps au scraper de lire les balises
+    st.rerun() # Ceci relance l'application
+    
+# 3. Code de secours (pour éviter l'écran blanc)
+st.markdown(f'<meta http-equiv="refresh" content="0; url={TARGET_URL}">', unsafe_allow_html=True)
+# Nous conservons la balise HTML de secours pour les navigateurs ou les environnements qui ne supportent pas st.rerun ou qui ont un cache agressif.
 
-# Le contenu n'est pas affiché, mais les balises sont injectées.
-st.components.v1.html(og_tags, height=0, width=0)
-
-# 3. Redirection immédiate
-#st.experimental_rerun() 
-
-# Si vous voulez une redirection immédiate, utilisez st.markdown avec du code HTML
-# C'est plus fiable pour une redirection instantanée.
-
-redirection_script = f"""
-<meta http-equiv="refresh" content="0; url=/">
-"""
-st.markdown(redirection_script, unsafe_allow_html=True)
-# Si vous voulez être sûr que les balises sont lues avant la redirection,
-# il faut mettre un délai (content="1; url=...") mais c'est moins 'furtif'.
+# Le code ci-dessous ne devrait jamais être atteint si la redirection fonctionne.
+st.stop()
