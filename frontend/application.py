@@ -2,6 +2,10 @@ import sys
 import os
 import streamlit as st
 from loguru import logger
+st.set_page_config(
+    page_title="Application de Prévention contre les Accidents Routiers", 
+    layout="wide", page_icon="🚨" 
+)
 
 if "path_added" not in st.session_state:
     ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -16,7 +20,7 @@ from frontend.section import home, EDA_graphs, risk_prediction, about
 from components.sidebar import show_sidebar
 
 
-st.set_page_config(page_title="APAR" , layout="wide")
+#st.set_page_config(page_title="APAR" , layout="wide")
 
 st.markdown("""
 <p style='color:#25383C; font-size:40px; font-weight:bold; margin-top:0; margin-bottom:10px;'>
