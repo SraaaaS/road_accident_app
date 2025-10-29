@@ -29,7 +29,7 @@ st.experimental_rerun()
 # C'est plus fiable pour une redirection instantanée.
 
 redirection_script = f"""
-<meta http-equiv="refresh" content="0; url=/">
+<meta http-equiv="refresh" content="1; url=/">
 """
 st.markdown(redirection_script, unsafe_allow_html=True)
 # Si vous voulez être sûr que les balises sont lues avant la redirection,
