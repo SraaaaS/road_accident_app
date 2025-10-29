@@ -23,13 +23,13 @@ og_tags = f"""
 st.components.v1.html(og_tags, height=0, width=0)
 
 # 3. Redirection immédiate
-st.experimental_rerun() 
+#st.experimental_rerun() 
 
 # Si vous voulez une redirection immédiate, utilisez st.markdown avec du code HTML
 # C'est plus fiable pour une redirection instantanée.
 
 redirection_script = f"""
-<meta http-equiv="refresh" content="1; url=/">
+<meta http-equiv="refresh" content="0; url=/">
 """
 st.markdown(redirection_script, unsafe_allow_html=True)
 # Si vous voulez être sûr que les balises sont lues avant la redirection,
