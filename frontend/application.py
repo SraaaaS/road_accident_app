@@ -1,13 +1,3 @@
-# import sys
-# import os
-# import streamlit as st
-# from loguru import logger
-
-# ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-# if str(ROOT_DIR) not in sys.path:
-#     sys.path.append(str(ROOT_DIR))
-#     logger.info(f"ROOT_DIR added to path: {ROOT_DIR}")
-
 import sys
 import os
 import streamlit as st
